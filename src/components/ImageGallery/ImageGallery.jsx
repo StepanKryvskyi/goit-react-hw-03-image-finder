@@ -19,8 +19,8 @@ export class ImageGallery extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.value !== this.props.value) {
-      this.setState({ images: [], status: "pending" });
-      this.fetchImages(this.props.value);
+      this.setState({ images: [], status: 'pending', pages: 1, isLoad: true });
+      this.fetchImages(this.props.value, 1);
     }
     if (prevState.pages !== this.state.pages) {
       this.fetchImages(this.props.value, this.state.pages);
