@@ -73,6 +73,9 @@ export class ImageGallery extends Component {
     const { images, status, modalIsOpen, isLoad } = this.state;
     const { largeImageURL, tags } = this.state.viewImage;
 
+    
+    const shouldRenderLoadMoreButton = images.length > 0 && isLoad;
+
     if (status === 'pending') {
       return <Loader />;
     }
@@ -89,11 +92,17 @@ export class ImageGallery extends Component {
               />
             ))}
           </GalleryList>
-          <Button onLoadMore={this.onLoadMore} isLoad={isLoad}/>
+
+          
+          {shouldRenderLoadMoreButton && (
+            <Button onLoadMore={this.onLoadMore} isLoad={isLoad} />
+          )}
+
           {modalIsOpen && (
             <Modal
               viewImage={this.state.viewImage}
-              onCloseModal={this.onCloseModal}>
+              onCloseModal={this.onCloseModal}
+            >
               <img src={largeImageURL} alt={tags} />
             </Modal>
           )}
@@ -106,6 +115,6 @@ export class ImageGallery extends Component {
           request
         </div>
       );
-    } 
     }
   }
+}

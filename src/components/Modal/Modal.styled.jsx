@@ -13,8 +13,9 @@ export const Overlay = styled.div`
   z-index: 1200;
 
   .modal{
-    max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px);
+    max-width: calc(100vw - 80px);
+  max-height: calc(100vh - 48px);
+  padding: 20px
   }
   
 `;
